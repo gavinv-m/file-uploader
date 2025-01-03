@@ -1,0 +1,42 @@
+<!-- Rendered by login-controller.js -->
+<%- include('./layout.ejs') %>
+<!-- TODO: Include header -->
+<main>
+  <h1>Sign in</h1>
+  <form action="/login" method="POST">
+    <form action="/login" method="POST">
+      <div>
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          aria-required="true"
+          autocomplete="username"
+        />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          aria-required="true"
+          autocomplete="current-password"
+        />
+      </div>
+      <div>
+        <button type="submit" aria-label="Log in">Log In</button>
+      </div>
+    </form>
+    <% if (errors) { %>
+    <ul>
+      <% errors.forEach((error) => { %>
+      <li><%= error %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+  </form>
+</main>

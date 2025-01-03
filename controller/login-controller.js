@@ -18,15 +18,17 @@ export const authenticateUser = [
 
     // Execute passport auth if no errors
     return passport.authenticate('local', {
-      failureFlash: true,
       failureRedirect: '/login',
+      failureFlash: true,
+      failureMessage: 'Invalid username or password',
       successRedirect: '/',
-    });
+    })(req, res, next);
   },
 ];
 
 // Exported to routes/login.js
 export const renderLogin = (req, res) => {
   const errors = req.flash('errors');
-  res.render('login', { errors });
+  const authErrors = req.flash('error');
+  res.render('login', { errors: [...errors, ...authErrors] });
 };
