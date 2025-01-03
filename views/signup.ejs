@@ -1,0 +1,50 @@
+<!-- Rendered by signup-controller -->
+<%- include('./layout.ejs') %>
+<main>
+  <h1>Let's get you signed up!</h1>
+  <form action="/signup" method="POST">
+    <div>
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        required
+        aria-required="true"
+        autocomplete="username"
+      />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        aria-required="true"
+        autocomplete="new-password"
+      />
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        required
+        aria-required="true"
+        autocomplete="new-password"
+      />
+    </div>
+    <div>
+      <button type="submit" aria-label="Sign up">Sign Up</button>
+    </div>
+  </form>
+  <% if (errors) { %>
+  <ul>
+    <% errors.forEach((error) => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+</main>
