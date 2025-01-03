@@ -6,3 +6,38 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String 
+  expiresAt DateTime
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  username String @unique
+  password String
+  createdAt DateTime @default(now())
+  folder Folder[]
+  file File[]
+}
+
+model Folder {
+  id Int @id @default(autoincrement())
+  name String @unique
+  path String @unique
+  parentFolder Int @default(0) // Root folder
+  createdAt DateTime @default(now())
+  userId Int 
+  user User @relation(fields: [userId], references: [id]) 
+}
+
+model File {
+  id Int @id @default(autoincrement())
+  name String @unique
+  path String @unique
+  createdAt DateTime @default(now())
+  userId Int
+  user User @relation(fields: [userId], references: [id]) 
+} 
