@@ -35,10 +35,29 @@ const seedFolders = async () => {
   }
 };
 
+const seedFiles = async () => {
+  // prettier-ignore
+  const files = [
+    { name: 'file1.txt', path: '/folders/dashboard/file1.txt', folderId: 1, userId: 1 },
+    { name: 'file2.txt', path: '/folders/documents/file2.txt', folderId: 2, userId: 2 },
+    { name: 'file3.txt', path: '/folders/projects/file3.txt', folderId: 3, userId: 3 },
+  ];
+
+  for (const file of files) {
+    try {
+      await db.addFile(file);
+      console.log(`Added file: ${file.name}`);
+    } catch (error) {
+      console.error(`Error adding file ${file.name}:`, error);
+    }
+  }
+};
+
 const main = async () => {
   try {
     await seedUsers();
     await seedFolders();
+    await seedFiles();
     console.log('Seeding completed successfully!');
     process.exit(0);
   } catch (error) {

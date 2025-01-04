@@ -34,6 +34,22 @@ const addFolder = async (folder) => {
   }
 };
 
-const db = { addFolder, addUser };
+const addFile = async (file) => {
+  try {
+    return await prisma.file.create({
+      data: {
+        name: file.name,
+        path: file.path,
+        userId: file.userId,
+        folderId: file.folderId,
+      },
+    });
+  } catch (error) {
+    console.error('Error adding folder:', error);
+    throw error;
+  }
+};
+
+const db = { addFolder, addUser, addFile };
 
 export default db;
