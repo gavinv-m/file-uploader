@@ -5,5 +5,6 @@ import { renderDashboard } from '../controller/dashboard-controller.js';
 const dashboardRoutes = Router();
 
 dashboardRoutes.get('/', isAuthenticated, renderDashboard);
+dashboardRoutes.get('/folders/*', isAuthenticated, renderDashboard);
 
 export default dashboardRoutes;
