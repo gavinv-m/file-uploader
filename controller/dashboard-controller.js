@@ -4,7 +4,8 @@ import db from '../config/db/queries.js';
 export const renderDashboard = async (req, res) => {
   const fullPath = req.params[0] || '';
   try {
-    const renderObject = await db.getFoldersAndFiles(fullPath);
+    const data = await db.getFoldersAndFiles(fullPath);
+    res.render('dashboard', { data });
   } catch (error) {
     console.error(`Error fetching folders and files ${file.name}:`, error);
   }

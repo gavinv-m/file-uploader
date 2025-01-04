@@ -6,5 +6,21 @@
     <button type="submit" aria-label="Logout" id="logout-btn">Logout</button>
   </form>
   <aside></aside>
-  <section></section>
+  <section>
+    <div class="files-section">
+      <% if (data.files.length !== 0) { %> <% data.files.forEach((file) => { %>
+      <div>
+        <span><%= file.name %></span>
+      </div>
+      <% }) %> <% } %>
+    </div>
+    <div class="folders-section">
+      <% if (data.subfolders.length !== 0) { %> <%
+      data.subfolders.forEach((folder) => { %>
+      <div>
+        <span><%= folder.name %></span>
+      </div>
+      <% }) %> <% } %>
+    </div>
+  </section>
 </main>
