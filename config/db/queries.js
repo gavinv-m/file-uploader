@@ -51,7 +51,7 @@ const addFile = async (file) => {
   }
 };
 
-const getFoldersAndFiles = async (folderId) => {
+const getFoldersAndFiles = async (folderId, userId) => {
   let subFolders = [];
   let files = [];
   let currentFolder = null;
@@ -59,11 +59,11 @@ const getFoldersAndFiles = async (folderId) => {
   try {
     if (folderId === 0) {
       subFolders = await prisma.folder.findMany({
-        where: { parentFolder: 0 },
+        where: { AND: [{ parentFolder: 0 }, { userId: userId }] },
       });
 
       files = await prisma.file.findMany({
-        where: { folderId: 0 },
+        where: { AND: [{ folderId: 0 }, { userId: userId }] },
       });
     } else {
       currentFolder = await prisma.folder.findUnique({
@@ -72,11 +72,11 @@ const getFoldersAndFiles = async (folderId) => {
 
       if (currentFolder) {
         subFolders = await prisma.folder.findMany({
-          where: { parentFolder: currentFolder.id },
+          where: { AND: [{ parentFolder: currentFolder.id, userId: userId }] },
         });
 
         files = await prisma.file.findMany({
-          where: { folderId: currentFolder.id },
+          where: { AND: [{ folderId: currentFolder.id, userId: userId }] },
         });
       }
     }
