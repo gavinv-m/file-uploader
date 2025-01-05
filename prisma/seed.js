@@ -19,9 +19,8 @@ const seedUsers = async () => {
 
 const seedFolders = async () => {
   // Create the root folder
-  const rootFolder = await db.addFolder({
+  await db.addFolder({
     name: 'root',
-    path: '/dashboard',
     parentFolder: 0, // Root folder has no parent
   });
 
@@ -29,54 +28,45 @@ const seedFolders = async () => {
   const folders = [
     {
       name: 'dashboard',
-      path: '/dashboard/folders/dashboard',
       parentFolder: 1,
       userId: 1,
       subfolders: [
         {
           name: 'analytics',
-          path: '/dashboard/folders/dashboard/analytics',
           userId: 1,
         },
         {
           name: 'settings',
-          path: '/dashboard/folders/dashboard/settings',
           userId: 1,
         },
       ],
     },
     {
       name: 'documents',
-      path: '/dashboard/folders/documents',
       parentFolder: 1,
       userId: 2,
       subfolders: [
         {
           name: 'reports',
-          path: '/dashboard/folders/documents/reports',
           userId: 2,
         },
         {
           name: 'invoices',
-          path: '/dashboard/folders/documents/invoices',
           userId: 2,
         },
       ],
     },
     {
       name: 'projects',
-      path: '/dashboard/folders/projects',
       parentFolder: 1,
       userId: 3,
       subfolders: [
         {
           name: 'projectA',
-          path: '/dashboard/folders/projects/projectA',
           userId: 3,
         },
         {
           name: 'projectB',
-          path: '/dashboard/folders/projects/projectB',
           userId: 3,
         },
       ],
@@ -100,14 +90,14 @@ const seedFolders = async () => {
 const seedFiles = async () => {
   // prettier-ignore
   const files = [
-    { name: 'file1.txt', path: '/dashboard/folders/dashboard/file1.txt', folderId: 1, userId: 1 },
-    { name: 'file2.txt', path: '/dashboard/folders/documents/file2.txt', folderId: 2, userId: 2 },
-    { name: 'file3.txt', path: '/dashboard/folders/projects/file3.txt', folderId: 3, userId: 3 },
+    { name: 'file1.txt', folderId: 1, userId: 1 },
+    { name: 'file2.txt', folderId: 2, userId: 2 },
+    { name: 'file3.txt', folderId: 3, userId: 3 },
 
     // Subfolder
-    { name: 'file4.txt', path: '/dashboard/folders/dashboard/analytics/file4.txt', folderId: 4, userId: 1 },
-    { name: 'file5.txt', path: '/dashboard/folders/documents/reports/file5.txt', folderId: 5, userId: 2 },
-    { name: 'file6.txt', path: '/dashboard/folders/projects/projectA/file6.txt', folderId: 6, userId: 3 }  
+    { name: 'file4.txt', folderId: 4, userId: 1 },
+    { name: 'file5.txt', folderId: 5, userId: 2 },
+    { name: 'file6.txt', folderId: 6, userId: 3 }  
   ];
 
   for (const file of files) {

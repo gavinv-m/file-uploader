@@ -26,7 +26,6 @@ model User {
 model Folder {
   id Int @id @default(autoincrement())
   name String @unique
-  path String? @unique
   parentFolder Int @default(1)
   createdAt DateTime @default(now())
   userId Int?
@@ -37,7 +36,6 @@ model Folder {
 model File {
   id Int @id @default(autoincrement())
   name String @unique
-  path String @unique
   createdAt DateTime @default(now())
   userId Int
   user User @relation(fields: [userId], references: [id]) 

@@ -23,7 +23,6 @@ const addFolder = async (folder) => {
     return await prisma.folder.create({
       data: {
         name: folder.name,
-        path: folder.path,
         parentFolder: folder.parentFolder,
         userId: folder.userId,
       },
@@ -40,7 +39,6 @@ const addFile = async (file) => {
     return await prisma.file.create({
       data: {
         name: file.name,
-        path: file.path,
         userId: file.userId,
         folderId: file.folderId,
       },
