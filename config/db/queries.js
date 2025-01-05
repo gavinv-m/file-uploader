@@ -68,7 +68,6 @@ const getFoldersAndFiles = async (folderId) => {
       currentFolder = await prisma.folder.findUnique({
         where: { id: folderId },
       });
-      console.log(currentFolder);
 
       if (currentFolder) {
         subFolders = await prisma.folder.findMany({

@@ -6,7 +6,6 @@ export const renderDashboard = async (req, res) => {
 
   try {
     const data = await db.getFoldersAndFiles(folderId);
-    console.log(data);
     res.render('dashboard', { data });
   } catch (error) {
     console.error(`Error fetching folders and files ${file.name}:`, error);
