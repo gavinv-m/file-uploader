@@ -15,13 +15,36 @@ const renderDialog = () => {
   dialog.showModal();
 };
 
-const submitForm = (event) => {
+const submitForm = async (event) => {
   event.preventDefault();
 
   const fileInput = document.getElementById('upload-file');
   const selectedFile = fileInput.files[0];
 
+  const currentUrl = window.location.pathname;
+  let folderId = currentUrl.split('/').pop();
+  folderId = folderId === 'dashboard' ? 1 : Number(folderId);
+
   if (selectedFile) {
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('folderId', folderId);
+
+    try {
+      const response = await fetch('/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+      } else {
+        console.error('File upload failed');
+      }
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
   }
 };
 

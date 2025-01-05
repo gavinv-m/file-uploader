@@ -18,12 +18,19 @@ const seedUsers = async () => {
 };
 
 const seedFolders = async () => {
+  // Create the root folder
+  const rootFolder = await db.addFolder({
+    name: 'root',
+    path: '/dashboard',
+    parentFolder: 0, // Root folder has no parent
+  });
+
   // Create main folders and subfolders
   const folders = [
     {
       name: 'dashboard',
       path: '/dashboard/folders/dashboard',
-      parentFolder: 0,
+      parentFolder: 1,
       userId: 1,
       subfolders: [
         {
@@ -41,7 +48,7 @@ const seedFolders = async () => {
     {
       name: 'documents',
       path: '/dashboard/folders/documents',
-      parentFolder: 0,
+      parentFolder: 1,
       userId: 2,
       subfolders: [
         {
@@ -59,7 +66,7 @@ const seedFolders = async () => {
     {
       name: 'projects',
       path: '/dashboard/folders/projects',
-      parentFolder: 0,
+      parentFolder: 1,
       userId: 3,
       subfolders: [
         {
