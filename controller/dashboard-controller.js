@@ -2,9 +2,11 @@ import db from '../config/db/queries.js';
 
 // Exports to routes/dashboard.js
 export const renderDashboard = async (req, res) => {
-  const fullPath = req.params[0] || '';
+  const folderId = Number(req.params.folderId) || 0;
+
   try {
-    const data = await db.getFoldersAndFiles(fullPath);
+    const data = await db.getFoldersAndFiles(folderId);
+    console.log(data);
     res.render('dashboard', { data });
   } catch (error) {
     console.error(`Error fetching folders and files ${file.name}:`, error);

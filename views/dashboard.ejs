@@ -18,7 +18,9 @@
       <% if (data.subfolders.length !== 0) { %> <%
       data.subfolders.forEach((folder) => { %>
       <div>
-        <span><%= folder.name %></span>
+        <a href="/dashboard/folders/<%= folder.id %>">
+          <span><%= folder.name %></span>
+        </a>
       </div>
       <% }) %> <% } %>
     </div>
