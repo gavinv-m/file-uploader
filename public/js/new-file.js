@@ -38,7 +38,8 @@ const submitForm = async (event) => {
 
       if (response.ok) {
         const result = await response.json();
-        console.log(result);
+        console.log('Success:', result);
+        window.location.reload();
       } else {
         console.error('File upload failed');
       }
