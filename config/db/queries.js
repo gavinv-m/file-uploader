@@ -56,6 +56,13 @@ const getFileName = async (fileId) => {
   return name;
 };
 
+const getFileUrl = async (fileId) => {
+  const { url } = await prisma.file.findUnique({
+    where: { id: fileId },
+  });
+  return url;
+};
+
 const getFoldersAndFiles = async (folderId, userId) => {
   let subFolders = [];
   let files = [];
@@ -109,6 +116,7 @@ const db = {
   addUser,
   addFile,
   getFileName,
+  getFileUrl,
   getFoldersAndFiles,
   getUserIdByFileId,
 };

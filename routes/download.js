@@ -1,8 +1,7 @@
 import { Router } from 'express';
 import { isAuthenticated } from '../utils/auth.js';
 import db from '../config/db/queries.js';
-import fs from 'node:fs';
-import path from 'node:path';
+import https from 'https';
 
 const downloadRouter = Router();
 
@@ -12,20 +11,22 @@ downloadRouter.post('/', isAuthenticated, async (req, res) => {
   const currentUser = req.user.id;
 
   if (fileUserId === currentUser) {
-    const file = await db.getFileName(fileId);
-    const filePath = path.join(process.cwd(), 'uploads', file);
+    const url = await db.getFileUrl(fileId);
+    const filename = await db.getFileName(fileId);
 
-    // Check if the file exists
-    if (fs.existsSync(filePath)) {
-      res.download(filePath, file, (err) => {
-        if (err) {
-          console.error('Error sending file:', err);
-          res.status(500).send('Internal Server Error');
-        }
+    https
+      .get(url, (fileRes) => {
+        res.setHeader(
+          'Content-Disposition',
+          `attachment; filename="${filename}"`
+        );
+        res.setHeader('Content-Type', fileRes.headers['content-type']);
+
+        fileRes.pipe(res);
+      })
+      .on('error', (err) => {
+        res.status(500).send('Error downloading file');
       });
-    } else {
-      res.status(404).send('File not found');
-    }
   } else {
     res.status(403).send('Forbidden');
   }
