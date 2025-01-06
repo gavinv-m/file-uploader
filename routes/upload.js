@@ -46,6 +46,13 @@ uploadRouter.post('/', upload.single('file'), async (req, res) => {
       folder: 'file-uploader',
     });
 
+    // Delete file
+    fs.unlink(path, (err) => {
+      if (err) {
+        console.error('Error deleting file from server:', err);
+      }
+    });
+
     await db.addFile({
       name: filename,
       userId: user,
