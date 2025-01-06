@@ -90,14 +90,14 @@ const seedFolders = async () => {
 const seedFiles = async () => {
   // prettier-ignore
   const files = [
-    { name: 'file1.txt', folderId: 1, userId: 1 },
-    { name: 'file2.txt', folderId: 2, userId: 2 },
-    { name: 'file3.txt', folderId: 3, userId: 3 },
-
+    { name: 'file1.txt', folderId: 1, userId: 1, cloudinaryUrl: 'https://res.cloudinary.com/demo/file1.txt' },
+    { name: 'file2.txt', folderId: 2, userId: 2, cloudinaryUrl: 'https://res.cloudinary.com/demo/file2.txt' },
+    { name: 'file3.txt', folderId: 3, userId: 3, cloudinaryUrl: 'https://res.cloudinary.com/demo/file3.txt' },
+  
     // Subfolder
-    { name: 'file4.txt', folderId: 4, userId: 1 },
-    { name: 'file5.txt', folderId: 5, userId: 2 },
-    { name: 'file6.txt', folderId: 6, userId: 3 }  
+    { name: 'file4.txt', folderId: 4, userId: 1, cloudinaryUrl: 'https://res.cloudinary.com/demo/file4.txt' },
+    { name: 'file5.txt', folderId: 5, userId: 2, cloudinaryUrl: 'https://res.cloudinary.com/demo/file5.txt' },
+    { name: 'file6.txt', folderId: 6, userId: 3, cloudinaryUrl: 'https://res.cloudinary.com/demo/file6.txt' }  
   ];
 
   for (const file of files) {

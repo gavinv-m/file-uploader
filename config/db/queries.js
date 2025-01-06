@@ -40,6 +40,7 @@ const addFile = async (file) => {
         name: file.name,
         userId: file.userId,
         folderId: file.folderId,
+        url: file.cloudinaryUrl,
       },
     });
   } catch (error) {
