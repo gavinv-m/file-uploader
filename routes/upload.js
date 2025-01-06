@@ -41,15 +41,16 @@ uploadRouter.post('/', upload.single('file'), async (req, res) => {
     const user = req.user.id;
 
     // Upload to load cloudinary
+    // TODO: Save the public_id to destroy or update the file
     const cloudinaryResponse = await cloudinary.uploader.upload(path, {
       folder: 'file-uploader',
     });
 
-    // TODO: Save file secure url in db
     await db.addFile({
       name: filename,
       userId: user,
       folderId: folder,
+      url: cloudinaryResponse.secure_url,
     });
     res.status(200).json({ message: 'File uploaded successfully' });
   } else {
