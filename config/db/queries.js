@@ -34,7 +34,6 @@ const addFolder = async (folder) => {
 };
 
 const addFile = async (file) => {
-  console.log('File object:', file);
   try {
     return await prisma.file.create({
       data: {

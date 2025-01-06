@@ -4,6 +4,7 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { fileURLToPath } from 'url';
 import db from '../config/db/queries.js';
+import cloudinary from '../config/cloudinary.js';
 
 // Get the current directory of the current module
 const __filename = decodeURIComponent(fileURLToPath(import.meta.url));
@@ -39,9 +40,14 @@ uploadRouter.post('/', upload.single('file'), async (req, res) => {
     const folder = Number(req.body.folderId);
     const user = req.user.id;
 
+    // Upload to load cloudinary
+    const cloudinaryResponse = await cloudinary.uploader.upload(path, {
+      folder: 'file-uploader',
+    });
+
+    // TODO: Save file secure url in db
     await db.addFile({
       name: filename,
-      path: path,
       userId: user,
       folderId: folder,
     });
