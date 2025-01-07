@@ -37,7 +37,33 @@ export const renderDashboard = async (req, res) => {
 
   try {
     const data = await db.getFoldersAndFiles(folderId, userId);
-    res.render('dashboard', { data });
+    const fileType = {
+      csv: 'public/svgs/csv.svg',
+      xls: 'public/svgs/excel.svg',
+      xlsx: 'public/svgs/excel.svg',
+      jpeg: 'public/svgs/img.svg',
+      jpg: 'public/svgs/img.svg',
+      png: 'public/svgs/img.svg',
+      pdf: 'public/svgs/pdf.svg',
+      txt: 'public/svgs/txt.svg',
+      doc: 'public/svgs/word.svg',
+      docx: 'public/svgs/word.svg',
+      default: 'public/svgs/default.svg',
+    };
+
+    const filesWithIcons = data.files.map((file) => {
+      const extension = file.name.split('.').pop();
+      const svg = fileType[extension] || fileType.default;
+      return { ...file, svg };
+    });
+    res.render('dashboard', {
+      data: {
+        ...data,
+        files: filesWithIcons,
+        uploadfile: 'public/svgs/uploadfile.svg',
+        folder: 'public/svgs/folder.svg',
+      },
+    });
   } catch (error) {
     console.error(`Error fetching folders and files ${file.name}:`, error);
   }
