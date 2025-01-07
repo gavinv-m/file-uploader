@@ -58,3 +58,18 @@ main {
   height: 15px;
   width: 15px;
 }
+
+/* Folders & Files */
+.folders-and-files,
+.folders-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.folders-and-files {
+  gap: 35px;
+}
+
+.folders-section {
+  gap: 15px;
+}

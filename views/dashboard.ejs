@@ -24,28 +24,35 @@
       />
     </div>
   </div>
-  <section>
-    <div class="files-section">
-      <% if (data.files.length !== 0) { %> <% data.files.forEach((file) => { %>
-      <div>
-        <img src="<%= file.svg %>" alt="File" class="icon" />
-        <span><%= file.name %></span>
-        <form action="/download" method="POST">
-          <input type="hidden" name="fileId" value="<%= file.id %>" />
-          <button type="submit">Download</button>
-        </form>
-      </div>
-      <% }) %> <% } %>
-    </div>
+  <section class="folders-and-files">
     <div class="folders-section">
-      <% if (data.subfolders.length !== 0) { %> <%
-      data.subfolders.forEach((folder) => { %>
-      <div>
-        <a href="/dashboard/folders/<%= folder.id %>">
-          <span><%= folder.name %></span>
-        </a>
+      <h3>Folders</h3>
+      <div class="folders-container">
+        <% if (data.subfolders.length !== 0) { %> <%
+        data.subfolders.forEach((folder) => { %>
+        <div class="folder">
+          <a href="/dashboard/folders/<%= folder.id %>">
+            <span><%= folder.name %></span>
+          </a>
+        </div>
+        <% }) %> <% } %>
       </div>
-      <% }) %> <% } %>
+    </div>
+    <div class="files-section">
+      <h3>Files</h3>
+      <div class="files-section">
+        <% if (data.files.length !== 0) { %> <% data.files.forEach((file) => {
+        %>
+        <div>
+          <img src="<%= file.svg %>" alt="File" class="icon" />
+          <span><%= file.name %></span>
+          <form action="/download" method="POST">
+            <input type="hidden" name="fileId" value="<%= file.id %>" />
+            <button type="submit">Download</button>
+          </form>
+        </div>
+        <% }) %> <% } %>
+      </div>
     </div>
     <!-- New file dialog -->
     <dialog id="new-file-dialog">
