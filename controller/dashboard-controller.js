@@ -61,7 +61,8 @@ export const renderDashboard = async (req, res) => {
         ...data,
         files: filesWithIcons,
         uploadfile: 'public/svgs/uploadfile.svg',
-        folder: 'public/svgs/folder.svg',
+        newFolder: 'public/svgs/folder.svg',
+        folderIcon: 'public/svgs/folder-icon.svg',
       },
     });
   } catch (error) {

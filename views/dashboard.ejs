@@ -1,6 +1,6 @@
 <!-- Rendered by dashboard-controller.js-->
 <%- include('./layout.ejs') %>
-<link rel="stylesheet" href="../public/styles/dashboard.css" />
+<link rel="stylesheet" href="/public/styles/dashboard.css" />
 <script src="/public/js/new-file.js" type="module" defer></script>
 <script src="/public/js/new-folder.js" type="module" defer></script>
 <header>
@@ -13,7 +13,7 @@
   <div class="user-actions">
     <div class="new-folder">
       <button id="new-folder-btn">New folder</button>
-      <img src="<%= data.folder %>" alt="Upload icon" class="upload-icons" />
+      <img src="<%= data.newFolder %>" alt="Upload icon" class="upload-icons" />
     </div>
     <div class="new-file">
       <button id="new-file-btn">New file</button>
@@ -32,7 +32,12 @@
         data.subfolders.forEach((folder) => { %>
         <div class="folder">
           <a href="/dashboard/folders/<%= folder.id %>">
-            <span><%= folder.name %></span>
+            <img
+              src="<%= data.folderIcon %>"
+              alt="Folder icon"
+              class="folder-icon"
+            />
+            <span class="folder-name"><%= folder.name %></span>
           </a>
         </div>
         <% }) %> <% } %>
@@ -40,16 +45,18 @@
     </div>
     <div class="files-section">
       <h3>Files</h3>
-      <div class="files-section">
+      <div class="files-container">
         <% if (data.files.length !== 0) { %> <% data.files.forEach((file) => {
         %>
-        <div>
-          <img src="<%= file.svg %>" alt="File" class="icon" />
-          <span><%= file.name %></span>
-          <form action="/download" method="POST">
+        <div class="file">
+          <a href="">
+            <img src="<%= file.svg %>" alt="File" class="icon" />
+            <span class="file-name"><%= file.name %></span>
+          </a>
+          <!-- <form action="/download" method="POST">
             <input type="hidden" name="fileId" value="<%= file.id %>" />
             <button type="submit">Download</button>
-          </form>
+          </form> -->
         </div>
         <% }) %> <% } %>
       </div>

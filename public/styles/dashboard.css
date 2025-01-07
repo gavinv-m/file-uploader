@@ -54,14 +54,16 @@ main {
   font-size: 17px;
 }
 
-.upload-icons {
+.upload-icons,
+.folder-icon {
   height: 15px;
   width: 15px;
 }
 
 /* Folders & Files */
 .folders-and-files,
-.folders-section {
+.folders-section,
+.files-section {
   display: flex;
   flex-direction: column;
 }
@@ -70,6 +72,54 @@ main {
   gap: 35px;
 }
 
-.folders-section {
+.folders-section,
+.files-section {
   gap: 15px;
+}
+
+.folders-container,
+.files-container {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.folder,
+.file {
+  height: 50px;
+  width: 250px;
+  max-width: 250px;
+}
+
+.folder a,
+.file a {
+  background-color: #f0f4fa;
+  border-radius: 8px;
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  width: 100%;
+
+  /* Descendants: */
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 20fr 80fr;
+  place-items: center;
+}
+
+.folder-icon {
+  height: 24px;
+  width: 24px;
+}
+
+.folder-name,
+.file-name {
+  color: #1f1f1f;
+  font-weight: 800;
+  justify-self: start;
+  max-width: 100%;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
