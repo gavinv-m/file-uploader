@@ -38,17 +38,17 @@ export const renderDashboard = async (req, res) => {
   try {
     const data = await db.getFoldersAndFiles(folderId, userId);
     const fileType = {
-      csv: 'public/svgs/csv.svg',
-      xls: 'public/svgs/excel.svg',
-      xlsx: 'public/svgs/excel.svg',
-      jpeg: 'public/svgs/img.svg',
-      jpg: 'public/svgs/img.svg',
-      png: 'public/svgs/img.svg',
-      pdf: 'public/svgs/pdf.svg',
-      txt: 'public/svgs/txt.svg',
-      doc: 'public/svgs/word.svg',
-      docx: 'public/svgs/word.svg',
-      default: 'public/svgs/default.svg',
+      csv: '/public/svgs/csv.svg',
+      xls: '/public/svgs/excel.svg',
+      xlsx: '/public/svgs/excel.svg',
+      jpeg: '/public/svgs/img.svg',
+      jpg: '/public/svgs/img.svg',
+      png: '/public/svgs/img.svg',
+      pdf: '/public/svgs/pdf.svg',
+      txt: '/public/svgs/txt.svg',
+      doc: '/public/svgs/word.svg',
+      docx: '/public/svgs/word.svg',
+      default: '/public/svgs/default.svg',
     };
 
     const filesWithIcons = data.files.map((file) => {
@@ -60,9 +60,9 @@ export const renderDashboard = async (req, res) => {
       data: {
         ...data,
         files: filesWithIcons,
-        uploadfile: 'public/svgs/uploadfile.svg',
-        newFolder: 'public/svgs/folder.svg',
-        folderIcon: 'public/svgs/folder-icon.svg',
+        uploadfile: '/public/svgs/uploadfile.svg',
+        newFolder: '/public/svgs/folder.svg',
+        folderIcon: '/public/svgs/folder-icon.svg',
       },
     });
   } catch (error) {
