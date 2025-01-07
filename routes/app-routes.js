@@ -6,6 +6,7 @@ import logoutRoute from './logout.js';
 import signupRoutes from './sign-up.js';
 import uploadRouter from './upload.js';
 import downloadRouter from './download.js';
+import fileDetailsRouter from './file-details.js';
 
 const appRoutes = Router();
 
@@ -18,6 +19,7 @@ appRoutes.use('/logout', logoutRoute);
 appRoutes.use('/signup', signupRoutes);
 appRoutes.use('/upload', uploadRouter);
 appRoutes.use('/download', downloadRouter);
+appRoutes.use('/files', fileDetailsRouter);
 
 // Exports to app.js
 export default appRoutes;
