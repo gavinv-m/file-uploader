@@ -13,5 +13,5 @@ export default function getFileIconPath(fileExtension) {
     default: '/public/svgs/default.svg',
   };
 
-  return fileType[fileExtension];
+  return fileType[fileExtension] ? fileType[fileExtension] : fileType.default;
 }
