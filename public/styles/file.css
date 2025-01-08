@@ -1,0 +1,71 @@
+header {
+  align-items: center;
+  box-shadow: 1px 2px 10px #f2e8dc;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 25px;
+}
+
+.home-btn,
+#logout-btn {
+  color: #4648aa;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.home-btn {
+  text-decoration: none;
+}
+
+#logout-btn {
+  background-color: white;
+  border: none;
+}
+
+main {
+  margin-top: 45px;
+  padding: 0px 10px;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+
+.file-details {
+  display: flex;
+  gap: 7px;
+}
+
+.file-details * {
+  font-weight: normal;
+}
+
+.file-details > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.name {
+  color: #4648aa;
+  font-size: 25px;
+}
+
+.created {
+  font-size: 20px;
+}
+
+.size {
+  font-size: 15px;
+}
+
+form button {
+  background-color: #4648aa;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  height: 50px;
+  width: 150px;
+}
