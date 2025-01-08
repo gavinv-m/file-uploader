@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import { fileURLToPath } from 'url';
 import db from '../config/db/queries.js';
 import cloudinary from '../config/cloudinary.js';
+import formateFileSize from '../utils/format-size.js';
 
 // Get the current directory of the current module
 const __filename = decodeURIComponent(fileURLToPath(import.meta.url));
@@ -58,6 +59,7 @@ uploadRouter.post('/', upload.single('file'), async (req, res) => {
       userId: user,
       folderId: folder,
       url: cloudinaryResponse.secure_url,
+      size: formateFileSize(req.file.size),
     });
     res.status(200).json({ message: 'File uploaded successfully' });
   } else {
