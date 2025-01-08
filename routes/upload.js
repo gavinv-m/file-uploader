@@ -43,9 +43,15 @@ uploadRouter.post('/', upload.single('file'), async (req, res) => {
 
     // Upload to load cloudinary
     // TODO: Save the public_id to destroy or update the file
-    const cloudinaryResponse = await cloudinary.uploader.upload(path, {
-      folder: 'file-uploader',
-    });
+    let cloudinaryResponse;
+    try {
+      cloudinaryResponse = await cloudinary.uploader.upload(path, {
+        folder: 'file-uploader',
+      });
+    } catch (cloudinaryError) {
+      console.error('Cloudinary upload failed:', cloudinaryError);
+      throw new Error(`Cloudinary upload failed: ${cloudinaryError.message}`);
+    }
 
     // Delete file
     fs.unlink(path, (err) => {
