@@ -57,32 +57,32 @@
         <% }) %> <% } %>
       </div>
     </div>
-    <!-- New file dialog -->
-    <dialog id="new-file-dialog">
-      <form action="" method="POST" id="upload-file-form">
-        <input
-          type="file"
-          name="upload-file"
-          id="upload-file"
-          style="display: none"
-        />
-        <label for="upload-file">Click here to choose file</label>
-        <div id="file-details">No file selected</div>
-        <button type="submit" aria-label="Submit file">Upload file</button>
-      </form>
-    </dialog>
-    <!-- New folder dialog -->
-    <dialog id="new-folder-dialog">
-      <form id="new-folder-form">
-        <input
-          type="text"
-          id="folder-name"
-          name="folderName"
-          placeholder="Enter folder name"
-          required
-        />
-        <button type="submit">Add Folder</button>
-      </form>
-    </dialog>
   </section>
+  <!-- New file dialog -->
+  <dialog id="new-file-dialog">
+    <form action="" method="POST" id="upload-file-form">
+      <input
+        type="file"
+        name="upload-file"
+        id="upload-file"
+        style="display: none"
+      />
+      <label for="upload-file">Click here to choose file</label>
+      <div id="file-details">No file selected</div>
+      <button type="submit" aria-label="Submit file">Upload file</button>
+    </form>
+  </dialog>
+  <!-- New folder dialog -->
+  <dialog id="new-folder-dialog">
+    <form id="new-folder-form">
+      <input
+        type="text"
+        id="folder-name"
+        name="folderName"
+        placeholder="Enter folder name"
+        required
+      />
+      <button type="submit">Add Folder</button>
+    </form>
+  </dialog>
 </main>
