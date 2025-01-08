@@ -123,3 +123,37 @@ main {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Dialog */
+dialog {
+  border: none;
+  border-radius: 8px;
+  max-width: 500px;
+  padding: 25px;
+  width: 50%;
+
+  /* Positioning: */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#new-file-dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+#upload-file-form label {
+  cursor: pointer;
+}
+
+#upload-file-form button {
+  background-color: #4648aa;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  height: 50px;
+}
