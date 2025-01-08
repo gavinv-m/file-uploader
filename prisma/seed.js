@@ -90,14 +90,14 @@ const seedFolders = async () => {
 const seedFiles = async () => {
   // prettier-ignore
   const files = [
-    { name: 'file1.txt', folderId: 1, userId: 1, cloudinaryUrl: 'https://res.cloudinary.com/demo/file1.txt' },
-    { name: 'file2.txt', folderId: 2, userId: 2, cloudinaryUrl: 'https://res.cloudinary.com/demo/file2.txt' },
-    { name: 'file3.txt', folderId: 3, userId: 3, cloudinaryUrl: 'https://res.cloudinary.com/demo/file3.txt' },
-  
+    { name: 'file1.txt', folderId: 1, userId: 1, url: 'https://res.cloudinary.com/demo/file1.txt', size: '7kb' },
+    { name: 'file2.txt', folderId: 2, userId: 2, url: 'https://res.cloudinary.com/demo/file2.txt', size: '12kb' },
+    { name: 'file3.txt', folderId: 3, userId: 3, url: 'https://res.cloudinary.com/demo/file3.txt', size: '15kb' },
+    
     // Subfolder
-    { name: 'file4.txt', folderId: 4, userId: 1, cloudinaryUrl: 'https://res.cloudinary.com/demo/file4.txt' },
-    { name: 'file5.txt', folderId: 5, userId: 2, cloudinaryUrl: 'https://res.cloudinary.com/demo/file5.txt' },
-    { name: 'file6.txt', folderId: 6, userId: 3, cloudinaryUrl: 'https://res.cloudinary.com/demo/file6.txt' }  
+    { name: 'file4.txt', folderId: 4, userId: 1, url: 'https://res.cloudinary.com/demo/file4.txt', size: '10kb' },
+    { name: 'file5.txt', folderId: 5, userId: 2, url: 'https://res.cloudinary.com/demo/file5.txt', size: '8kb' },
+    { name: 'file6.txt', folderId: 6, userId: 3, url: 'https://res.cloudinary.com/demo/file6.txt', size: '9kb' }  
   ];
 
   for (const file of files) {

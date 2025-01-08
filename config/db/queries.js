@@ -41,6 +41,7 @@ const addFile = async (file) => {
         userId: file.userId,
         folderId: file.folderId,
         url: file.url,
+        size: file.size,
       },
     });
   } catch (error) {
