@@ -49,14 +49,10 @@
         <% if (data.files.length !== 0) { %> <% data.files.forEach((file) => {
         %>
         <div class="file">
-          <a href="">
+          <a href="/files/<%= file.id %>">
             <img src="<%= file.svg %>" alt="File" class="icon" />
             <span class="file-name"><%= file.name %></span>
           </a>
-          <!-- <form action="/download" method="POST">
-            <input type="hidden" name="fileId" value="<%= file.id %>" />
-            <button type="submit">Download</button>
-          </form> -->
         </div>
         <% }) %> <% } %>
       </div>

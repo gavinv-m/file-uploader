@@ -1,0 +1,19 @@
+<!-- Rendered by file-details -->
+<%- include('./layout.ejs') %>
+<header>
+  <a href="/" class="home-btn">Home</a>
+  <form action="/logout" method="POST" aria-label="Logout">
+    <button type="submit" aria-label="Logout" id="logout-btn">Logout</button>
+  </form>
+</header>
+<main>
+  <img src="<%= svg %>" alt="File icon" />
+  <div>
+    <h1><%= name %></h1>
+    <h2><%= createdAt %></h2>
+    <form action="/download" method="POST">
+      <input type="hidden" name="fileId" value="<%= id %>" />
+      <button type="submit">Download</button>
+    </form>
+  </div>
+</main>
