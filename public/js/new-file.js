@@ -15,8 +15,12 @@ const renderDialog = () => {
   dialog.showModal();
 };
 
+let submitting = false;
 const submitForm = async (event) => {
   event.preventDefault();
+
+  if (submitting) return; // Prevent multiple submissions
+  submitting = true;
 
   const fileInput = document.getElementById('upload-file');
   const selectedFile = fileInput.files[0];
@@ -45,7 +49,11 @@ const submitForm = async (event) => {
       }
     } catch (error) {
       console.error('Error uploading file:', error);
+    } finally {
+      submitting = false;
     }
+  } else {
+    submitting = false; // Reset the flag if no file is selected
   }
 };
 
